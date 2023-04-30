@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejas Dhariwal | Portfolio
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+        button{
+            cursor: pointer;
+        }
+
+
+        /* Navbar */
+        .container {
+            max-width: 1050px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .navbar {
+            width: 100%;
+            box-shadow: 2px 2px 2px 2px rgb(146 161 176 / 15%);
+            top: 0;
+            position: fixed;
+            background-color: white;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 62px;
+        }
+
+        .navbar .menu-items {
+            display: flex;
+        }
+
+        .navbar .nav-container li {
+            list-style: none;
+        }
+
+        .navbar .nav-container a {
+            text-decoration: none;
+            color: #0e2431;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 0.7rem;
+        }
+
+        .navbar .nav-container a:hover {
+            font-weight: bolder;
+        }
+
+        .nav-container {
+            display: block;
+            position: relative;
+            height: 60px;
+        }
+
+        .nav-container .checkbox {
+            position: absolute;
+            display: block;
+            height: 32px;
+            width: 32px;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .nav-container .hamburger-lines {
+            display: block;
+            height: 26px;
+            width: 32px;
+            position: absolute;
+            top: 17px;
+            left: 20px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-container .hamburger-lines .line {
+            display: block;
+            height: 4px;
+            width: 100%;
+            border-radius: 10px;
+            background: #0e2431;
+        }
+
+        .nav-container .hamburger-lines .line1 {
+            transform-origin: 0% 0%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line2 {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .nav-container .hamburger-lines .line3 {
+            transform-origin: 0% 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .navbar .menu-items {
+            padding-top: 120px;
+            box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+            height: 100vh;
+            width: 100%;
+            transform: translate(-150%);
+            display: flex;
+            flex-direction: column;
+            margin-left: -40px;
+            padding-left: 50px;
+            transition: transform 0.5s ease-in-out;
+            text-align: center;
+        }
+
+        .navbar .menu-items li {
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 1.2rem;
+            color: #0e2431;
+        }
+
+        .nav-container input[type="checkbox"]:checked~.menu-items {
+            transform: translateX(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+            transform: rotate(45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+            transform: scaleY(0);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+            transform: rotate(-45deg);
+        }
+
+        .nav-container input[type="checkbox"]:checked~.logo {
+            display: none;
+        }
+
+        /* Main body */
+        .main {
+            margin-top: 5vh;
+            text-align: center;
+        }
+
+        /* Intro Section */
+        .intro-image {
+            margin: 5vh 2vw 5vh 2vw;
+        }
+
+        .intro-img {
+            width: 50vw;
+        }
+
+        .intro {
+            margin: 10vh 2vw 10vh 2vw;
+            display: flex;
+            align-content: space-between;
+        }
+
+        .intro-content {
+            margin: auto;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .intro-img {
+                width: 92vw;
+            }
+
+            .intro {
+                display: block;
+            }
+
+            .intro-content {
+                margin-top: 2vh;
+                text-align: center;
+            }
+        }
+
+
+        /* About Section */
+        .about {
+            margin: 2vh 2vw 2vh 2vw;
+            align-items: center;
+        }
+        .about-heading{
+            margin-bottom: 5vh;
+        }
+        .about-info{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .about-img {
+            height: 90vh;
+        }
+
+        .about-image {
+            margin: 2vh 2vw 2vh 2vw;
+        }
+
+        @media screen and (max-width:1000px) {
+            .about-info {
+                display: block;
+                text-align: center;
+            }
+
+            .about-img {
+                width: 70vw;
+            }
+        }
+
+        /* Skills section */
+        .skills {
+            margin: 10vh 2vw 10vh 2vw;
+        }
+
+        .skill-img {
+            margin: 0 2vw 5vh 2vw;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .img {
+            width: 200px;
+            box-shadow: 3px 3px 3px 3px grey;
+            border-radius: 4px;
+            margin: 1vh 1vw 1vh 1vw
+        }
+
+        #img2 {
+            margin-top: 10vh
+        }
+
+        #img3 {
+            margin-top: 20vh;
+        }
+
+        .skills-heading {
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        .content {
+            display: flex;
+            text-align: center;
+        }
+
+        .skill-content {
+            margin-top: 5vh;
+        }
+
+        .skill-content1 {
+            margin-bottom: 2vh;
+        }
+
+        @media screen and (max-width:1000px) {
+            .content {
+                display: block;
+            }
+
+            .skill-img {
+                display: block;
+                width: 100vw;
+                text-align: center;
+            }
+
+            #img2 {
+                margin-top: 1vh;
+            }
+
+            #img3 {
+                margin-top: 1vh;
+            }
+        }
+
+        /* Projects section */
+        .projects {
+            margin: 10vh 2vw 10vh 2vw;
+        }
+
+        .projects-heading {
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        .projects-content {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .project1 {
+            box-shadow: 2px 2px 2px 2px grey;
+            border-radius: 5px;
+            text-align: center;
+            padding: 2vh 2vw 2vh 2vw;
+            margin: 2vh 2vw 2vh 2vw;
+        }
+
+        .project1-title {
+            margin-bottom: 1vh;
+        }
+
+        .project1-img {
+            width: 200px;
+            margin-bottom: 1vh;
+        }
+
+        .project1-view {
+            margin-top: 2vh;
+        }
+
+        .project1-view {
+            margin-left: 1vw;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 2vh;
+            width: 125px;
+            height: 30px;
+            color: rgb(23, 22, 22);
+        }
+
+        .project1-view:hover {
+            background-color: rgb(23, 22, 22);
+            transition: 0.5s;
+        }
+
+        .project1-form {
+            display: inline;
+        }
+
+        .project2 {
+            box-shadow: 2px 2px 2px 2px grey;
+            border-radius: 5px;
+            text-align: center;
+            padding: 2vh 2vw 2vh 2vw;
+            margin: 2vh 2vw 2vh 2vw;
+        }
+
+        .project2-title {
+            margin-bottom: 1vh;
+        }
+
+        .project2-img {
+            width: 250px;
+            margin-bottom: 1vh;
+        }
+
+        .project2-view {
+            margin-left: 1vw;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 2vh;
+            width: 125px;
+            height: 30px;
+            color: rgb(23, 22, 22);
+        }
+
+        .project2-view:hover {
+            background-color: rgb(23, 22, 22);
+            transition: 0.5s;
+        }
+
+        .project2-form {
+            display: inline;
+        }
+
+        @media screen and (max-width: 900px) {
+            .projects-content {
+                display: block;
+            }
+        }
+
+        /* Telling the user that what can i do for them */
+        .help{
+            margin: 2vh 2vw 5vh 2vw;
+            text-align: center;
+        }
+        .help-heading{
+            margin-bottom: 2vh;
+        }
+        .help-info{
+            display: flex;
+            align-content: space-around;
+        }
+        .help-info1{
+            box-shadow: 2px 2px 2px 2px gray;
+            border-radius: 4px;
+            padding: 2vh 2vw 2vh 2vw;
+            margin: auto;
+            width: 40vw;
+            height: 65vh;
+        }
+        .help-info1-img{
+            border-radius: 5px;
+            width: 40vw;
+            height: 45vh;
+        }
+        .help-info1-btn{
+            width: 150px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: white;
+            font-weight: bolder;
+            margin-top: 1vh;
+            color:rgb(23, 22, 22);
+            padding: 5px 5px 5px 5px;
+        }
+        .help-info1-btn:hover{
+            background-color: rgb(23, 22, 22);
+            transition: 0.5s;
+        }
+
+        .help-info2{
+            box-shadow: 2px 2px 2px 2px gray;
+            border-radius: 5px;
+            margin: auto;
+            width: 40vw;
+            height: 65vh;
+            padding: 2vh 2vw 2vh 2vw;
+        }
+        .help-info2-img{
+            border-radius: 5px;
+            width: 38vw;
+            height: 50vh;
+        }
+        .help-info2-btn{
+            margin-top: 1vh;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 150px;
+            height: 40px;
+            background-color: white;
+            font-weight: bolder;
+            color:rgb(23, 22, 22);
+            padding: 5px 5px 5px 5px;
+        }
+        .help-info2-btn:hover{
+            background-color:rgb(23, 22, 22);
+            transition: 0.5s;
+        }
+        @media screen and (max-width:1150px) {
+            .help-info2-img{
+                height: 45vh;
+            }
+        }
+        @media screen and (max-width:1000px) {
+            .help-info{
+                display: block;
+            }
+            .help-heading{
+                margin-bottom: 5vh;
+            }
+            .help-info1{
+                margin-bottom: 5vh;
+                width: 80vw;
+                height: 68vh;
+            }
+            .help-info1-img{
+                width: 70vw;
+                height: 50vh;
+            }
+            .help-info2{
+                width: 80vw;
+                height: 68vh;
+            }
+            .help-info2-img{
+                width: 70vw;
+                height: 50vh;
+            }
+            
+        }
+
+        /* Contact Section */
+        .contact {
+            margin: 10vh 2vw 10vh 2vw;
+        }
+
+        .contact-heading {
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        .contact-content {
+            display: flex;
+            align-content: space-between;
+        }
+
+        .contact-quote {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            border-right: 1px solid grey;
+            padding-right: 7vh;
+            text-align: center;
+        }
+
+
+        .contact-form {
+            box-shadow: 2px 2px 2px 2px grey;
+            border-radius: 5px;
+            padding: 10px 10px 10px 10px;
+            text-align: center;
+            margin: 0 2vh 0 7vh;
+        }
+
+        .name {
+            width: 19vw;
+            height: 5vh;
+            margin-right: 1vh;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        .email {
+            margin-left: 1vh;
+            width: 19vw;
+            height: 5vh;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        .mess {
+            margin-top: 2vh;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        .btn {
+            height: 5vh;
+            width: 14vh;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: rgb(42, 42, 42);
+            color: rgb(42, 42, 42);
+            transition: 1s;
+
+
+        }
+
+        @media screen and (max-width: 1100px) {
+            .contact-content {
+                display: block;
+            }
+
+            .contact-quote {
+                margin: 0 2vh 4vh 2vh;
+                /* top right bottom left */
+                border: 0ch;
+            }
+
+            .mess {
+                width: 65vw;
+            }
+        }
+
+        /* Footer Section */
+        .footer {
+            margin-top: 5vh;
+            /* box-shadow: 2px grey inset; */
+            box-shadow: 0px -5px 5px grey;
+            text-align: center;
+            padding: 2vh 2vw 2vh 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar">
+            <div class="container nav-container">
+                <input class="checkbox" type="checkbox" name="" id="" />
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <div class="logo">
+                    <h1>Tejas Dhariwal</h1>
+                </div>
+                <div class="menu-items">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#help">Help</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main body -->
+    <div class="main">
+        <!-- Intro Section -->
+        <div class="intro">
+            <div class="intro-image">
+                <img src="{% static 'images/img9.avif' %}" alt="" class="intro-img">
+            </div>
+            <div class="intro-content">
+                <h1 class="intro-heading">Hi !</h1>
+                <h2 class="intro-text" id="intro-text1">I'm Tejas dhariwal</h2>
+                <h2 class="intro-text" id="intro-text2">A python developer</h2>
+                <h2 class="intro-text" id="intro-text3">A full-stack web developer.</h2>
+            </div>
+        </div>
+        <hr>
+
+        <!-- About Section -->
+        <div class="about" id="about">
+            <h1 class="about-heading">About me</h1>
+            <div class="about-info">
+                <div class="about-image">
+                    <img src="{% static 'images/img14.avif' %}" alt="img" class="about-img">
+                </div>
+                <div class="about-content">
+                    <h3 class="about-me">My name is Tejas Dhariwal. Few years back, I didn't knew anything about coding.
+                        But, in 2019 my father introduced me to the concept of coding and from then I never stopped and
+                        finding a lot of interest in it, today I am a full stack web developer and a python developer.
+                        Now I
+                        am looking for various opportunities to work on the ideas of other people and make their dream
+                        work
+                        live on the internet.
+
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Skills Section -->
+        <div class="skills" id="skills">
+            <h1 class="skills-heading">My Top Skills</h1>
+            <div class="content">
+                <div class="skill-img">
+                    <img src="{% static 'images/img1.webp' %}" alt="img1" id="img1" class="img" width="200px">
+                    <img src="{% static 'images/img3.png' %}" alt="img3" id="img2" class="img" width="300px">
+                    <img src="{% static 'images/img2.png' %}" alt="img2" id="img3" class="img" width="200px">
+                </div>
+                <div class="skill-content">
+                    <div class="skill-content1">
+                        <h4>
+                            I am a full stack web developer and I can build a fully functional website for young
+                            entrepreneurs to bring their business online. In web-development, I have an experience of two
+                            years working in html, css and python(django).
+                        </h4>
+
+                    </div>
+                    <div class="skill-content2">
+                        <h4>
+                            I am a python programmer also with an experience of two plus years and I can solve your
+                            problems
+                            with my python coding skills and increase the efficiency of your work.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Projects Section -->
+        <div class="projects" id="projects">
+            <h1 class="projects-heading">My recent projects</h1>
+            <div class="projects-content">
+                <div class="project1">
+                    <h2 class="project1-title">TextUtils</h2>
+                    <img src="{% static 'images/img4.svg' %}" alt="img" class="project1-img">
+                    <p class="project1-desc">This is a website which helps us to work with our text in many ways.</p>
+                    <span class="project1-status">Under development</span>
+                    <form action="{% url 'textutils' %}" method="post" class="project2-form">{% csrf_token %}
+                        <button class="project1-view">View project</button>
+                    </form>
+                </div>
+
+                <div class="project2">
+                    <h2 class="project2-title">Planet Fitness Gym</h2>
+                    <img src="{% static 'images/img5.jpg' %}" alt="" class="project2-img">
+                    <p class="project2-desc">This is a gym website to promote their business online.</p>
+                    <span class="project2-status">Completed</span>
+                    <form action="{% url 'gym' %}" method="post" class="project1-form">{% csrf_token %}
+                        <button class="project2-view">View project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Telling the user that what can i do for them -->
+        <div class="help" id="help">
+            <h1 class="help-heading">What can I do for you ?</h1>
+            <div class="help-info">
+                <div class="help-info1">
+                    <img src="{% static 'images/img11.avif' %}" alt="img" class="help-info1-img">
+                    <h3 class="help-info1-text">I can build a fully functional website for you to bring your business online.</h3>
+                    <form action="#contact">
+                        <button class="help-info1-btn">Ask for making a website</button>
+                    </form>
+                </div>
+                <div class="help-info2">
+                    <img src="{% static 'images/img15.avif' %}" alt="img" class="help-info2-img">
+                    <h3 class="help-info2-text">I can solve your problems with my coding skills.</h3>
+                    <form action="#contact">
+                        <button class="help-info2-btn">Ask for a problem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Contact Section -->
+        <div class="contact" id="contact">
+            <h1 class="contact-heading">Get in touch !</h1>
+            <div class="contact-content">
+                <div class="contact-quote">
+                    <h2 class="quote">If you have any questions or queries, I will always be happy to help. Feel free to
+                        contact me and I will surely get back to you as soon as possible.</h2>
+                </div>
+                <form class="contact-form" method="post">{% csrf_token %}
+                    <div class="userdetails">
+                        <input type="text" placeholder="Name" class="name" name="name">
+                        <input type="email" placeholder="E-mail" class="email" name="email">
+                    </div>
+                    <div class="user-message">
+                        <textarea cols="77" rows="10" placeholder="Message" class="mess" name="message"></textarea>
+                    </div>
+
+                    <button class="btn" onclick="showAlert()">Submit</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3 class="footer-content">Made by Tejas Dhariwal</h3>
+    </footer>
+</body>
+
+</html>
